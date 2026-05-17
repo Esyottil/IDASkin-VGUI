@@ -31,9 +31,6 @@
 ```
 
 ```text
-README.md successfully created.
-
-```text
    themes/
    └── Steam2004/
        └── theme.css
