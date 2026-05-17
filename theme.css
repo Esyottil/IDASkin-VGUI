@@ -1,0 +1,545 @@
+/*
+  Half-Life 2 Beta / Steam 2004 Dark Theme for IDA Pro
+  Based on the classic Valve VGUI2 Green (#4c5844)
+*/
+
+@importtheme "_base";
+
+/* Базовая палитра старого Steam */
+@def default_bg_color #4c5844;                /* Фирменный зеленый Steam */
+@def default_bg_color_darker #2b3326;         /* Глубокий темно-зеленый для полей ввода и списков */
+@def default_bg_color_default #3b4535;        /* Промежуточный оттенок для панелей */
+@def default_text_color #cbd5c8;              /* Блекло-зеленый текст интерфейса */
+@def default_border_color #3a4434;            /* Темные строгие рамки */
+@def default_border_radius 0px;                /* В 2004 году скруглений почти не было */
+
+/* Золотые/Янтарные акценты (Цвет кнопок и HUD Half-Life) */
+@def blue_border_color_hover #ebd264;         /* Золотой при наведении */
+@def blue_border_color_focus #ffb000;         /* Фирменный янтарный */
+@def blue_border_color_lighter #ffe066;
+@def blue_border_color_darker #9e8433;
+
+@def dark_disabled_text_color #606d59;         /* Заблокированный текст */
+@def dock_title_bg_color #5a6952;             /* Заголовки панелей */
+@def menu_border_color #1c2118;               /* Границы контекстных меню */
+@def menu_selected_item_bg_color #5d6c54;     /* Выделение в меню */
+
+DockWidgetTitle,
+DockAreaDragTitle
+{
+    border: 1px solid ${default_border_color};
+    background-color: ${dock_title_bg_color};
+    color: #ffffff;
+}
+
+DockWidgetTitle[active="true"]
+{
+    background-color: #627359;
+    color: #ffffff;
+}
+
+DockAreaDragTitle
+{
+    background-color: ${dock_title_bg_color};
+}
+
+DockWidget > QWidget > QAbstractButton
+{
+    background-color: ${default_bg_color_darker};
+    border: 1px solid ${default_border_color};
+    color: ${default_text_color};
+}
+
+chooser_widget_t,
+standalone_dirtree_widget_t
+{
+    qproperty-highlight-bg-default: #ebd264;
+    qproperty-highlight-bg-selected: #ffb000;
+
+    qproperty-cut-text-color-default : #606d59;
+    qproperty-cut-text-color-selected : #3a4434;
+}
+
+log_widget_t
+{
+    color: #ffffff;
+    background-color: ${default_bg_color_darker};
+    border: 1px solid ${default_border_color};
+}
+
+/* Настройки текстовых полей */
+text_area_t
+{
+    qproperty-keyword1-fg: #ebd264;
+    qproperty-keyword2-fg: #a9bfa0;
+    qproperty-keyword3-fg: #df5138;
+    qproperty-string-fg: #ffb000;
+    qproperty-comment-fg: #76856f;
+    qproperty-preprocessor-fg: #ebd264;
+    qproperty-user1-fg: #bdccb4;
+}
+
+text_area_t QWidget
+{
+    background-color: transparent;
+}
+
+text_area_t text_area_margin_widget_t
+{
+    color: #76856f;
+    qproperty-header-color: ${default_text_color};
+    background-color: ${default_bg_color_darker};
+}
+
+QWidget
+{
+    background-color: ${default_bg_color};
+    color: ${default_text_color};
+    border-color: ${default_border_color};
+}
+
+QTextEdit,
+QPlainTextEdit
+{
+    background-color: ${default_bg_color_darker};
+    border: 1px solid ${default_border_color};
+    color: #ffffff;
+}
+
+QMenu
+{
+    background-color: ${default_bg_color};
+    border: 1px solid ${menu_border_color};
+    color: ${default_text_color};
+}
+
+QMenuBar
+{
+    background-color: ${default_bg_color};
+    color: ${default_text_color};
+    border-bottom: 1px solid ${default_border_color};
+}
+
+QMenuBar::item
+{
+    background-color: transparent;
+}
+
+QMenuBar::item:selected
+{
+    background-color: ${menu_selected_item_bg_color};
+    color: #ffffff;
+}
+
+QMenu::item:selected
+{
+    background-color: ${menu_selected_item_bg_color};
+    color: #ffffff;
+}
+
+QMenu::item:disabled
+{
+    color: ${dark_disabled_text_color};
+}
+
+QLineEdit
+{
+    background-color: ${default_bg_color_darker};
+    border: 1px solid ${default_border_color};
+    color: #ffffff;
+    min-height: 20px;
+}
+
+QLineEdit:hover
+{
+    border: 1px solid ${blue_border_color_hover};
+}
+
+QLineEdit:focus
+{
+    border: 1px solid ${blue_border_color_focus};
+}
+
+/* Старые квадратные вкладки Steam */
+QTabBar::tab
+{
+    background-color: ${default_bg_color_default};
+    color: ${default_text_color};
+    border: 1px solid ${default_border_color};
+    padding: 4px 8px;
+    margin-right: 2px;
+}
+
+QTabBar::tab:selected
+{
+    background-color: ${default_bg_color};
+    color: #ffffff;
+    border-bottom: 1px solid ${default_bg_color};
+}
+
+QTabBar::tab:hover
+{
+    background-color: #55634c;
+    color: #ffffff;
+}
+
+QTableView,
+QTreeView,
+QListView
+{
+    border: 1px solid ${default_border_color};
+    background-color: ${default_bg_color_darker};
+    color: ${default_text_color};
+}
+
+QHeaderView::section
+{
+    background-color: ${default_bg_color_default};
+    color: ${default_text_color};
+    border: none;
+    border-left: 1px solid #56634d;
+    border-right: 1px solid #2b3326;
+    border-bottom: 1px solid ${default_border_color};
+    padding: 3px;
+}
+
+QHeaderView:horizontal::section
+{
+    min-height: 20px;
+}
+
+QTableCornerButton::section
+{
+    background: ${default_bg_color_darker};
+    border: 1px solid ${default_border_color};
+}
+
+/* Скроллбары в стиле VGUI2 */
+QScrollBar
+{
+    background-color: ${default_bg_color_darker};
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+QScrollBar::sub-line,
+QScrollBar::add-line
+{
+    width: 0;
+    height: 0;
+}
+
+QScrollBar::add-page,
+QScrollBar::sub-page
+{
+    background: none;
+}
+
+QScrollBar::handle
+{
+    background-color: ${default_bg_color};
+    border: 1px solid #56634d;
+    margin: 1px;
+}
+
+QScrollBar::handle:hover
+{
+    background-color: #55634c;
+    border-color: ${blue_border_color_hover};
+}
+
+QToolBar
+{
+    background-color: ${default_bg_color};
+    border-bottom: 1px solid ${default_border_color};
+    spacing: 3px;
+}
+
+/* Кнопки Steam 2004 */
+QPushButton
+{
+    background-color: ${default_bg_color_default};
+    border: 1px solid ${default_border_color};
+    color: ${default_text_color};
+    text-align: center;
+    min-height: 20px;
+    min-width: 50px;
+    padding: 2px 8px;
+}
+
+QPushButton:disabled
+{
+    color: ${dark_disabled_text_color};
+    background-color: ${default_bg_color_darker};
+}
+
+QPushButton:hover,
+QPushButton:default
+{
+    border: 1px solid ${blue_border_color_hover};
+    color: #ffffff;
+}
+
+QPushButton:default
+{
+    background-color: #434e3c;
+}
+
+QPushButton:pressed
+{
+    background-color: ${default_bg_color_darker};
+    border: 1px solid ${blue_border_color_focus};
+}
+
+QComboBox
+{
+    background-color: ${default_bg_color_darker};
+    border: 1px solid ${default_border_color};
+    color: ${default_text_color};
+    padding-left: 4px;
+}
+
+QComboBox > QLineEdit,
+QComboBox > QLineEdit:hover,
+QComboBox > QLineEdit:focus
+{
+    border: none;
+}
+
+QComboBox:hover
+{
+    border: 1px solid ${blue_border_color_hover};
+}
+
+QComboBox:focus
+{
+    border: 1px solid ${blue_border_color_focus};
+}
+
+QComboBox::drop-down
+{
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+    border-left: 1px solid ${default_border_color};
+    background-color: ${default_bg_color_default};
+}
+
+QComboBox QAbstractItemView
+{
+    background-color: ${default_bg_color_darker};
+    border: 1px solid ${menu_border_color};
+    color: ${default_text_color};
+}
+
+QComboBox:!editable
+{
+    background-color: ${default_bg_color_darker};
+}
+
+QLabel
+{
+    background: transparent;
+    color: ${default_text_color};
+}
+
+QStatusBar
+{
+    background-color: ${default_bg_color_default};
+    border-top: 1px solid ${default_border_color};
+}
+
+QStatusBar QLabel
+{
+    border: none;
+    color: ${default_text_color};
+}
+
+QStatusBar::item
+{
+    border: 1px solid ${default_border_color};
+}
+
+EditContainer,
+ChooserContainer,
+QGroupBox
+{
+    border: 1px solid ${default_border_color};
+    background-color: ${default_bg_color};
+}
+
+QGroupBox::title
+{
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 3px;
+    color: #ffffff;
+}
+
+QTreeView::item:selected,
+QListView::item:selected,
+QTableView::item:selected,
+QTreeView::branch:selected
+{
+    background-color: #5d6c54;
+    color: #ffffff;
+}
+
+QToolTip,
+QTipLabel
+{
+    border: 1px solid ${blue_border_color_focus};
+    background: #2b3326;
+    color: #ffffff;
+}
+
+/* Переработка основного окна ассемблера (CustomIDAMemo) */
+@def dark_highlight_color rgba(235, 210, 100, 0.25);
+
+CustomIDAMemo
+{
+    border: none;
+
+    qproperty-line-fg-default: #cbd5c8;               /* Базовый текст */
+    qproperty-line-fg-regular-comment: #76856f;       /* Комментарии */
+    qproperty-line-fg-repeatable-comment: #83947b;    
+    qproperty-line-fg-automatic-comment: #677561;     
+    qproperty-line-fg-insn: #ffffff;                  /* Инструкции */
+    qproperty-line-fg-dummy-data-name: #a2b397;       
+    qproperty-line-fg-regular-data-name: #b1c2a6;     
+    qproperty-line-fg-demangled-name: #cbd5c8;        
+    qproperty-line-fg-punctuation: #9bb090;           
+    qproperty-line-fg-charlit-in-insn: #ffb000;        /* Янтарный из HL */
+    qproperty-line-fg-strlit-in-insn: #ffb000;         
+    qproperty-line-fg-numlit-in-insn: #e0a000;         
+    qproperty-line-fg-void-opnd: #df5138;             /* Ошибки / HEV Red */
+    qproperty-line-fg-code-xref: #ebd264;             /* Ссылки кода */
+    qproperty-line-fg-data-xref: #cca72a;             
+    qproperty-line-fg-code-xref-to-tail: #df5138;     
+    qproperty-line-fg-data-xref-to-tail: #a2b397;     
+    qproperty-line-fg-error: #ff3b30;                 
+    qproperty-line-fg-line-prefix: #849479;           
+    qproperty-line-fg-opcode-byte: #6b7a63;           
+    qproperty-line-fg-extra-line: #76856f;            
+    qproperty-line-fg-alt-opnd: #cbd5c8;              
+    qproperty-line-fg-hidden: #5a6752;                
+    qproperty-line-fg-libfunc: #ebd264;               
+    qproperty-line-fg-locvar: #b1c2a6;                
+    qproperty-line-fg-dummy-code-name: #ebd264;       
+    qproperty-line-fg-asm-directive: #91a386;         
+    qproperty-line-fg-macro: #bdccb4;                 
+    qproperty-line-fg-strlit-in-data: #ffb000;        
+    qproperty-line-fg-charlit-in-data: #ffb000;       
+    qproperty-line-fg-numlit-in-data: #e0a000;        
+    qproperty-line-fg-keyword: #a9bfa0;               
+    qproperty-line-fg-register-name: #cbd5c8;         
+    qproperty-line-fg-import-name: #ebd264;           
+    qproperty-line-fg-segment-name: #91a386;          
+    qproperty-line-fg-dummy-unknown-name: #a2b397;    
+    qproperty-line-fg-code-name: #ebd264;             
+    qproperty-line-fg-unknown-name: #cbd5c8;          
+    qproperty-line-fg-collapsed-line: #ebd264;        
+    
+    qproperty-line-bg-default: ${default_bg_color};   /* Родной фон Steam */
+    qproperty-line-bg-selected: #5d6c54;              /* Выделение */
+    qproperty-caret: #ffffff;
+    
+    qproperty-line-pfx-libfunc: #cbd5c8;              
+    qproperty-line-pfx-func: #849479;                 
+    qproperty-line-pfx-insn: #ebd264;                 
+    qproperty-line-pfx-data: #6b7a63;                 
+    qproperty-line-pfx-unexplored: #5a6752;           
+    qproperty-line-pfx-extern: #a2b397;               
+    qproperty-line-pfx-current-line: #ebd264;         
+    qproperty-line-pfx-current-item: #ffb000;         
+    qproperty-line-pfx-lumina: #718267;               
+    
+    /* Окно графа под стиль сеток Hammer Editor */
+    qproperty-graph-bg-top: ${default_bg_color};
+    qproperty-graph-bg-bottom: ${default_bg_color_darker};
+    qproperty-graph-node-title-normal: #cbd5c8;       
+    qproperty-graph-node-title-selected: #ffffff;     
+    qproperty-graph-node-title-current: #1c2118;      
+    qproperty-graph-node-frame-group: #ebd264;        
+    qproperty-graph-node-shadow: #1c2118;             
+    qproperty-graph-node-high1: #5d6c54;              
+    qproperty-graph-node-high2: #6b7a63;              
+    qproperty-graph-node-foreign: #df5138;            
+    qproperty-graph-edge-normal: #76856f;             
+    qproperty-graph-edge-yes: #8fc278;                
+    qproperty-graph-edge-no: #bc4334;                 
+    qproperty-graph-edge-high: #ebd264;               
+    qproperty-graph-edge-selected: #ffb000;           
+    qproperty-graph-node-frame-selected: #ebd264;     
+    qproperty-line-fg-patched-bytes: #ebd264;         
+    qproperty-line-fg-unsaved-changes: #e0a000;       
+    qproperty-line-bg-highlight: ${dark_highlight_color};
+    qproperty-line-bg-bpt-enabled: #9a3324;           
+    qproperty-line-bg-bpt-disabled: #5a6752;          
+    qproperty-line-bg-bpt-unavailable: #e0a000;       
+    qproperty-bookmark-star-outline: #ebd264;         
+}
+
+CustomIDAMemo[debugging="true"]
+{
+    qproperty-line-bg-default: #3b4535;
+}
+
+CustomIDAMemo[hints="true"]
+{
+    qproperty-line-bg-default: #3d4737;
+}
+
+/* Окно регистров процессора */
+TCpuRegs
+{
+    background-color: ${default_bg_color_darker};
+    border: 1px solid ${default_border_color};
+    qproperty-register-defined: #ffffff;
+    qproperty-register-changed: #ebd264;
+    qproperty-register-edited: #ffb000;
+    qproperty-register-unavailable: #606d59;
+}
+
+TCpuRegs ui_label_t
+{
+    color: ${default_text_color};
+}
+
+/* Стрелочки переходов в коде */
+TextArrows
+{
+    qproperty-jump-in-function: #6b7a63;
+    qproperty-jump-external-to-function: #ebd264;
+    qproperty-jump-under-cursor: #ffb000;
+    qproperty-jump-target: #8fc278;
+    qproperty-register-target: #bdccb4;
+}
+
+/* Верхняя полоска навигации (NavBand) */
+navband_t
+{
+    qproperty-lib-function: #ebd264;
+    qproperty-function: #bdccb4;
+    qproperty-code: #2b3326;
+    qproperty-data: #5a6752;
+    qproperty-undefined: #3a4434;
+    qproperty-extern: #a2b397;
+    qproperty-lumina-function: #718267;
+
+    qproperty-hl-lib-function: #ffe066;
+    qproperty-hl-function: #ffffff;
+    qproperty-hl-code: #3b4535;
+    qproperty-hl-data: #76856f;
+    qproperty-hl-undefined: #4c5844;
+    qproperty-hl-extern: #cbd5c8;
+    qproperty-hl-lumina-function: #849479;
+
+    qproperty-hl-outline : #ffb000;
+
+    qproperty-error: #df5138;
+    qproperty-gap: #1c2118;
+    qproperty-cursor: #ffffff;
+    qproperty-auto-analysis-cursor: #ebd264;
+}
